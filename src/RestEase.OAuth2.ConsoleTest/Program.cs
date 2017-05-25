@@ -7,9 +7,9 @@ namespace RestEase.OAuth2.ConsoleTest
     {
         static void Main(string[] args)
         {
-            var grant = new ClientCredentialsGrant("http://localhost:9090");
+            var handler = new ClientCredentialsGrantHandler("http://localhost:9090");
 
-            var api = OAuth2RestClient.For<IMyApp>("http://localhost:9090", grant);
+            var api = OAuth2RestClient.For<IMyApp>("http://localhost:9090", handler);
 
             string result = api.GetHelloAsync().Result;
 

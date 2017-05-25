@@ -7,12 +7,12 @@ namespace RestEase.OAuth2.ConsoleTest
 {
     static class OAuth2RestClient
     {
-        public static T For<T>(string url, ClientCredentialsGrant grantType)
+        public static T For<T>(string url, ClientCredentialsGrantHandler grantHandlerType)
         {
-            return RestClient.For<T>(url, (request, token) => RequestModifier(grantType, request, token));
+            return RestClient.For<T>(url, (request, token) => RequestModifier(grantHandlerType, request, token));
         }
 
-        private static async Task RequestModifier(ClientCredentialsGrant x, HttpRequestMessage request, CancellationToken token)
+        private static async Task RequestModifier(ClientCredentialsGrantHandler x, HttpRequestMessage request, CancellationToken token)
         {
             var auth = request.Headers.Authorization;
             if (auth != null)

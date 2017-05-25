@@ -4,16 +4,16 @@ using System.Threading.Tasks;
 
 namespace RestEase.OAuth2.ConsoleTest
 {
-    class ClientCredentialsGrant
+    class ClientCredentialsGrantHandler
     {
         private readonly SemaphoreSlim _accesTokenSemaphore = new SemaphoreSlim(1, 1);
         private readonly IOAuth2Api _api;
 
         public OAuth2Model OAuth2Model { get; set; }
 
-        public ClientCredentialsGrant(string url)
+        public ClientCredentialsGrantHandler(string url)
         {
-            _api = RestClient.For<IOAuth2Api>(url);
+            _api = RestClient.For<IOAuth2Api>(url + "/oauth2/access");
         }
 
         public async Task<OAuth2Model> GetAccessTokenAsync()
