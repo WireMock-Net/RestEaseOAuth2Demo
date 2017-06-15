@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9EAB7BDE-2BFB-402D-A4F8-C80D7FF5D11B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestEaseOAuth2Test", "src\RestEase.OAuth2\RestEaseOAuth2Test.csproj", "{DD247010-351B-4BB6-9332-2B918D37C41E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestEase.OAuth2.ConsoleTest", "src\RestEase.OAuth2.ConsoleTest\RestEase.OAuth2.ConsoleTest.csproj", "{FDD85A1D-04C4-4AFA-88F5-8E5ADD5BFD6F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestEase.OAuth2.ConsoleTest", "src\RestEase.OAuth2.ConsoleTest\RestEase.OAuth2.ConsoleTest.csproj", "{FDD85A1D-04C4-4AFA-88F5-8E5ADD5BFD6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WireMock.Net.Console", "src\WireMock.Net.Console\WireMock.Net.Console.csproj", "{582C3234-A93A-4B1C-AD0F-ED9BE475D1EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +25,10 @@ Global
 		{FDD85A1D-04C4-4AFA-88F5-8E5ADD5BFD6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDD85A1D-04C4-4AFA-88F5-8E5ADD5BFD6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDD85A1D-04C4-4AFA-88F5-8E5ADD5BFD6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{582C3234-A93A-4B1C-AD0F-ED9BE475D1EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{582C3234-A93A-4B1C-AD0F-ED9BE475D1EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{582C3234-A93A-4B1C-AD0F-ED9BE475D1EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{582C3234-A93A-4B1C-AD0F-ED9BE475D1EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,5 +36,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{DD247010-351B-4BB6-9332-2B918D37C41E} = {9EAB7BDE-2BFB-402D-A4F8-C80D7FF5D11B}
 		{FDD85A1D-04C4-4AFA-88F5-8E5ADD5BFD6F} = {9EAB7BDE-2BFB-402D-A4F8-C80D7FF5D11B}
+		{582C3234-A93A-4B1C-AD0F-ED9BE475D1EB} = {9EAB7BDE-2BFB-402D-A4F8-C80D7FF5D11B}
 	EndGlobalSection
 EndGlobal

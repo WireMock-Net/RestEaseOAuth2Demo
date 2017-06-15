@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RestEase.OAuth2\RestEaseOAuth2Test.csproj" />
+    <PackageReference Include="WireMock.Net.StandAlone" Version="1.0.1" />
   </ItemGroup>
 
 </Project>

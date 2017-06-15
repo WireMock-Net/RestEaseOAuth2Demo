@@ -6,19 +6,19 @@ namespace RestEase.OAuth2.ConsoleTest
 {
     class ClientCredentialsGrantHandler
     {
-        private readonly SemaphoreSlim _accesTokenSemaphore = new SemaphoreSlim(1, 1);
+        private readonly SemaphoreSlim _accessTokenSemaphore = new SemaphoreSlim(1, 1);
         private readonly IOAuth2Api _api;
 
         public OAuth2Model OAuth2Model { get; set; }
 
         public ClientCredentialsGrantHandler(string url)
         {
-            _api = RestClient.For<IOAuth2Api>(url + "/oauth2/access");
+            _api = RestClient.For<IOAuth2Api>(url);
         }
 
         public async Task<OAuth2Model> GetAccessTokenAsync()
         {
-            await _accesTokenSemaphore.WaitAsync();
+            await _accessTokenSemaphore.WaitAsync();
 
             try
             {
@@ -28,17 +28,62 @@ namespace RestEase.OAuth2.ConsoleTest
                     {
                         {"grant_type", "password"},
                         {"username", "u"},
-                        {"password", "p"}
+                        {"password", "p"},
+                        {"client_id", "X"},
+                        {"client_secret", "P"},
                     };
 
-                    OAuth2Model = await _api.AuthenticateAsync(data);
+                    OAuth2Model = await _api.AuthorizeAsync(data);
+                }
+                else
+                {
+                    var data = new Dictionary<string, object>
+                    {
+                        {"grant_type", "refresh_token"},
+                        {"refresh_token", OAuth2Model.RefreshToken},
+                        {"client_id", "X"},
+                        {"client_secret", "P"},
+                    };
+
+                    OAuth2Model = await _api.RefreshTokenAsync(data);
                 }
 
                 return OAuth2Model;
             }
             finally
             {
-                _accesTokenSemaphore.Release(1);
+                _accessTokenSemaphore.Release(1);
+            }
+        }
+
+        public async Task<OAuth2Model> GetRefreshTokenAsync()
+        {
+            await _accessTokenSemaphore.WaitAsync();
+
+            try
+            {
+                if (OAuth2Model == null)
+                {
+                    return await GetAccessTokenAsync();
+                }
+                else
+                {
+                    var data = new Dictionary<string, object>
+                    {
+                        {"grant_type", "refresh_token"},
+                        {"refresh_token", OAuth2Model.RefreshToken},
+                        {"client_id", "X"},
+                        {"client_secret", "P"},
+                    };
+
+                    OAuth2Model = await _api.RefreshTokenAsync(data);
+                }
+
+                return OAuth2Model;
+            }
+            finally
+            {
+                _accessTokenSemaphore.Release(1);
             }
         }
     }
